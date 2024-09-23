@@ -14,4 +14,14 @@ button.addEventListener("click", () =>{
 
 function mostrarPokemon(){
     document.querySelector(".cargandoDatos").style.visibility = "visible";
+    const request = new XMLHttpRequest();
+    request.addEventListener("readystatechange", (e) =>{
+        if (
+            e.target.readyState ===4){
+                
+            }
+    });
+
+    request.open("GET", "https://pokeapi.co/api/v2/pokemon/");
+    request.send();
 }
