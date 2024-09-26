@@ -1,49 +1,51 @@
-import Pokemon from './Pokemon.js';
+import Pokemon from "./Pokemon.js";
 
-// Creamos un array para los 151 pokemons que obtendremos desde la API
+
 var pokemons = [];
 
 
 // Selección boton del DOM
 const button = document.querySelector("button");
 
-button.addEventListener("click", () =>{
-    document.querySelectorAll("#filtro").forEach((e) =>{
+button.addEventListener("click", () => {
+    document.querySelectorAll("#filtro").forEach((e) => {
         e.style.visibility = "visible";
     });
     let listaPokemon = document.querySelector(".listaPokemon");
-        listaPokemon.style.visibility = "visible";
+    listaPokemon.style.visibility = "visible";
 
     startPokemon();
 });
 
 
-const startPokemon = async() =>{
-    for (var i=1; i <= 151; i++){
-        try{
+const startPokemon = async () => {
+    for (var i = 1; i <= 151; i++) {
+        try {
 
-            await fetch("https://pokeapi.co/api/v2/pokemon/"+i+"/")
-                .then(function(result){
+            await fetch("https://pokeapi.co/api/v2/pokemon/" + i + "/")
+                .then(function (result) {
                     return result.json();
                 })
-                .then(function(data){
-                    console.log(data)
+                .then(function (data) {
+                    const pokemon = new Pokemon(data); // Instancio una clase.
+                    pushPokemon(pokemon); // Guardo los pokemones en un array.
                 })
-            }
-        catch (error){
-            alert("Error")
         }
-    }
-    
-    // document.querySelector(".cargandoDatos").style.visibility = "visible";
-    // const request = new XMLHttpRequest();
-    // request.addEventListener("readystatechange", (e) =>{
-    //     if (e.target.readyState ===4 ){
-    //             const datos = JSON.parse(e.target.responseText);
-    //             console.log(datos)
-    //         }
-    // });
+        catch (error) {
+            alert("Error");
+        }
 
-    // request.open("GET", "https://pokeapi.co/api/v2/pokemon/");
-    // request.send();
+
+    };
+    await showPokedex();
+
+};
+
+function pushPokemon(pokemon) {
+    pokemons.push(pokemon);
+
+}
+
+const showPokedex = async () => {
+    console.log(pokemons);
 }
