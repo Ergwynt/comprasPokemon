@@ -1,3 +1,9 @@
+import Pokemon from './Pokemon.js';
+
+// Creamos un array para los 151 pokemons que obtendremos desde la API
+var pokemons = [];
+
+
 // Selección boton del DOM
 const button = document.querySelector("button");
 
@@ -8,21 +14,36 @@ button.addEventListener("click", () =>{
     let listaPokemon = document.querySelector(".listaPokemon");
         listaPokemon.style.visibility = "visible";
 
-    mostrarPokemon();
+    startPokemon();
 });
 
 
-function mostrarPokemon(){
-    document.querySelector(".cargandoDatos").style.visibility = "visible";
-    const request = new XMLHttpRequest();
-    request.addEventListener("readystatechange", (e) =>{
-        if (e.target.readyState ===4){
-                const datos = JSON.parse(e.target.responseText);
-                console.log(datos
-                    )
-            }
-    });
+const startPokemon = async() =>{
+    for (var i=1; i <= 151; i++){
+        try{
 
-    request.open("GET", "https://pokeapi.co/api/v2/pokemon/");
-    request.send();
+            await fetch("https://pokeapi.co/api/v2/pokemon/"+i+"/")
+                .then(function(result){
+                    return result.json();
+                })
+                .then(function(data){
+                    console.log(data)
+                })
+            }
+        catch (error){
+            alert("Error")
+        }
+    }
+    
+    // document.querySelector(".cargandoDatos").style.visibility = "visible";
+    // const request = new XMLHttpRequest();
+    // request.addEventListener("readystatechange", (e) =>{
+    //     if (e.target.readyState ===4 ){
+    //             const datos = JSON.parse(e.target.responseText);
+    //             console.log(datos)
+    //         }
+    // });
+
+    // request.open("GET", "https://pokeapi.co/api/v2/pokemon/");
+    // request.send();
 }
