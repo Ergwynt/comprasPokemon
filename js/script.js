@@ -7,6 +7,20 @@ var pokemons = [];
 // Selección boton del DOM
 const button = document.querySelector("button");
 
+
+const btnListaDeseo = document.querySelector("#btn_lista_deseo");
+const btnVerListaDeseo = document.querySelector("#btn_ver_lista_deseo");
+const btnComprar = document.querySelector("#btn_comprar");
+const btnVerCompra = document.querySelector("#btn_ver_compra");
+
+btnListaDeseo.addEventListener("click", () => {
+    console.log("He pulsado lista deseo");
+})
+btnVer  ListaDeseo.addEventListener("click", () => {
+    console.log("He pulsado lista deseo");
+})
+
+
 function showConsole(){
     document.querySelectorAll("#filtro").forEach((e) => {
         e.style.visibility = "visible";
@@ -62,20 +76,31 @@ const showPokedex = async () => {
     showConsole();
     const pokedex = document.getElementById("pokedex");
 
-    for (var i = 0; i< pokemons.length; i++){
+    pokemons.forEach((pokemon) =>{
         var aux = 0;
-        while (aux != pokemons[i].pkm_type.length){
-            if(aux ==0) var tipo1 = pokemons[i].pkm_type[aux].type.name;
-            if(aux ==1) var tipo2 = pokemons[i].pkm_type[aux].type.name;
+        while (aux != pokemon.pkm_type.length){
+            if(aux ==0) var tipo1 = pokemon.pkm_type[aux].type.name;
+            if(aux ==1) var tipo2 = pokemon.pkm_type[aux].type.name;
             else tipo2 = "";
             aux ++;
         };
-        pokedex.innerHTML += `<div class='card'>
-    <img src="${pokemons[i].pkm_back}">
-    <img class="front" src="${pokemons[i].pkm_front}"><br>
-    ${pokemons[i].id}. ${pokemons[i].name}<br>
-    <div class="types">${tipo1} ${tipo2}</div>
-    </div>`;
-    }
+
+        const card = document.createElement("div");
+        card.classList.add("card");
+  
+
+        card.innerHTML += `
+                <img src="${pokemon.pkm_back}">
+                <img class="front" src="${pokemon.pkm_front}"><br>
+                ${pokemon.id}. ${pokemon.name}<br>
+                <div class="types">${tipo1} ${tipo2}</div>
+                `;
+    
+        card.addEventListener("click", () =>{
+            alert(`Han pulsado a ${pokemon.name}`);
+        });
+        pokedex.appendChild(card);
+    })
+        
     
 }
