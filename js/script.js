@@ -41,6 +41,27 @@ function showConsole(){
     document.querySelectorAll("#filtro").forEach((e) => {
         e.style.visibility = "visible";
     });
+
+
+    document.querySelectorAll(".input").forEach((e)=>{
+        e.style.visibility = "visible";
+        e.addEventListener("keypress", (t) =>{
+        
+            const tp1 = document.getElementById("filtroTipo").value;
+            console.log(tp1)
+            pokemonsFiltered = [];
+
+            pokemons.forEach((pk)=>{
+                
+                if(pk.pkm_type[0] == tp1){
+                    pokemonsFiltered.push(pk);
+                }
+                
+            });
+        });
+    });
+
+
     document.querySelectorAll('.btnMenu').forEach((e) => {
         e.style.visibility = "visible";
     });
