@@ -3,7 +3,7 @@ import Pokemon from "./Pokemon.js";
 
 var pokemons = [];
 
-
+var pkm_selected = [];
 // Selección boton del DOM
 const button = document.querySelector("button");
 
@@ -15,9 +15,25 @@ const btnVerCompra = document.querySelector("#btn_ver_compra");
 
 btnListaDeseo.addEventListener("click", () => {
     console.log("He pulsado lista deseo");
-})
-btnVer  ListaDeseo.addEventListener("click", () => {
-    console.log("He pulsado lista deseo");
+    console.log("Añadido a Lista de deseo: ")
+    pkm_selected.forEach((pkm) =>{
+        
+        if(pkm.name =="squirtle"){
+            console.log("Squirting")
+        }
+        else{
+            console.log(pkm.name)
+        }
+        
+
+    });
+    console.log(navigator.appName);
+    window.open();
+});
+btnVerListaDeseo.addEventListener("click", () => {
+
+    console.log("He pulsado ver lista deseo");
+    
 })
 
 
@@ -97,10 +113,12 @@ const showPokedex = async () => {
                 `;
     
         card.addEventListener("click", () =>{
-            alert(`Han pulsado a ${pokemon.name}`);
+            console.log(`Han pulsado a ${pokemon.name}`);
+            pkm_selected.push(pokemon);
         });
         pokedex.appendChild(card);
     })
+
         
     
 }

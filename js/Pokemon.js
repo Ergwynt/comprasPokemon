@@ -7,6 +7,8 @@ export default class Pokemon {
         this.pkm_front = data.sprites.front_default;    // Pokemon de frente
         this.pkm_back = data.sprites.back_default;      // Pokemon de espaldas
         this.pkm_type = data.types;               // Tipo del pokemon (Devuelve un array)
+        this.pkm_attack = data.stats[1].base_stats;
+        this.Precio
 
     }
 }
