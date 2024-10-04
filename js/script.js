@@ -12,6 +12,7 @@ const btnVerCompra = document.querySelector("#btn_ver_compra");
 
 // Selección del input de filtro por tipo
 const filtroTipoInput = document.getElementById("filtroTipo");
+const filtroAtack = document.getElementById("filtroAtaque")
 
 // Evento para añadir a la lista de deseos
 btnListaDeseo.addEventListener("click", () => {

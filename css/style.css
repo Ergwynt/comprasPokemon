@@ -1,9 +1,3 @@
-.input, .btnMenu, .listaPokemon, .cargandoDatos{
-    visibility: hidden;
-}
-body {
-    background: #3466AF;
-}
 
 body {
     background: #3466AF;
@@ -38,6 +32,10 @@ body {
     font-size: 16px;
     font-family: DejaVu Sans Mono, monospace;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.input, .btnMenu, .listaPokemon, .cargandoDatos{
+    visibility: hidden;
 }
 
 /* Pokedex */
@@ -77,4 +75,31 @@ body {
     border: 1px solid rgb(255, 217, 0);
     font: bold;
     background-image: linear-gradient(rgb(248, 247, 169), rgb(255, 238, 0));
+}
+
+.filtros {
+    display: flex; /* Utiliza flexbox para organizar los inputs y botones en fila */
+    align-items: center; /* Alinea verticalmente los elementos */
+    gap: 10px; /* Espacio entre los elementos */
+    margin: 10px 0; /* Espacio entre las filas de filtros */
+}
+
+.input {
+    padding: 10px;
+    width: 200px; /* Ancho de los inputs */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btnMenu {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+.btnMenu:hover {
+    background-color: #0056b3; /* Color del botón al pasar el mouse */
 }
