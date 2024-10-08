@@ -35,6 +35,12 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+.button:hover{
+    box-shadow: 10px 5px 5px rgb(63, 26, 26);
+    font-family: 'Courier New', Courier, monospace;
+    transform: scale(1.1);
+}
+
 .input, .btnMenu, .listaPokemon, .cargandoDatos {
     visibility: hidden;
 }
@@ -108,4 +114,14 @@ body {
     border: 1px solid rgb(255, 217, 0);
     font: bold;
     background-image: linear-gradient(rgb(248, 247, 169), rgb(255, 238, 0));
+}
+
+.precio{
+    background-color: #81a0d8;
+}
+.stats {
+    display: inline-block;
+    margin-right: 10px; /* Espacio entre los divs */
+    padding: 5px;
+    background-color: #e5ff55;
 }

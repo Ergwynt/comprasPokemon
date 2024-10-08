@@ -111,10 +111,14 @@ const showPokedex = async () => {
         card.classList.add("card");
 
         card.innerHTML = `
+            <div class = "stats"> Ataque: ${pokemon.pkm_attack}</div>
+            <div class ="stats">Defensa:${pokemon.pkm_defense}</div>
             <img src="${pokemon.pkm_back}">
+            
             <img class="front" src="${pokemon.pkm_front}"><br>
             ${pokemon.id}. ${pokemon.name}<br>
             <div class="types">${tipo1} ${tipo2}</div>
+            <div class="precio">${pokemon.precio}€</div>
         `;
 
         // Evento para añadir el Pokémon a la lista de deseos
@@ -157,9 +161,13 @@ const mostrarPokemonFiltrados = (pokemonsFiltrados) => {
 
         card.innerHTML = `
             <img src="${pokemon.pkm_back}">
+            <div class = "precio"> ${pokemon.pkm_attack}</div>
             <img class="front" src="${pokemon.pkm_front}"><br>
             ${pokemon.id}. ${pokemon.name}<br>
+            
             <div class="types">${tipo1} ${tipo2}</div>
+            <div class = "precio"> ${pokemon.precio}€</div>
+            
         `;
 
         // Evento para añadir el Pokémon a la lista de deseos
