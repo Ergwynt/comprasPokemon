@@ -13,6 +13,7 @@ const btnVerCompra = document.querySelector("#btn_ver_compra");
 // Selección del input de filtro por tipo
 const filtroTipoInput = document.getElementById("filtroTipo");
 const filtroAtack = document.getElementById("filtroAtaque")
+const filtroDefense = document.getElementById("filtroDefensa");
 
 // Evento para añadir a la lista de deseos
 btnListaDeseo.addEventListener("click", () => {
@@ -131,18 +132,34 @@ const showPokedex = async () => {
     });
 };
 
-// Filtro por tipo de Pokémon
-filtroTipoInput.addEventListener("input", () => {
-    const filtroTipo = filtroTipoInput.value.toLowerCase(); // Capturar el valor en minúsculas
+// Función para filtrar Pokémon
+const filtrarPokemons = () => {
+    // Obtener los valores de los filtros
+    const filtroTipo = filtroTipoInput.value.toLowerCase();
+    const filtroAtak = filtroAtack.value.toLowerCase();
+    const filtroDef = filtroDefense.value.toLowerCase();
 
-    // Filtrar los Pokémon por tipo
+    // Filtrar los Pokémon por tipo y ataque
     const pokemonsFiltrados = pokemons.filter((pokemon) => {
-        return pokemon.pkm_type.some((typeInfo) => typeInfo.type.name.includes(filtroTipo));
+        const tipoCoincide = pokemon.pkm_type.some((typeInfo) => typeInfo.type.name.includes(filtroTipo));
+        const ataqueCoincide = pokemon.pkm_attack.toString().includes(filtroAtak);
+        const defensaCoincide = pokemon.pkm_defense.toString().includes(filtroDef);
+        
+        return (filtroTipo === '' || tipoCoincide) && (filtroAtak === '' || ataqueCoincide) && (filtroDef === '' || defensaCoincide );
     });
 
     // Mostrar los Pokémon filtrados
     mostrarPokemonFiltrados(pokemonsFiltrados);
-});
+};
+
+// Agregar el evento input al filtro por tipo de Pokémon
+filtroTipoInput.addEventListener("input", filtrarPokemons);
+
+// Agregar el evento input al filtro por ataque normal
+filtroAtack.addEventListener("input", filtrarPokemons);
+
+// Agregar el evento input al filtro por defensa normal
+filtroDefense.addEventListener("input",filtrarPokemons);
 
 // Función para mostrar los Pokémon filtrados
 const mostrarPokemonFiltrados = (pokemonsFiltrados) => {
@@ -150,7 +167,21 @@ const mostrarPokemonFiltrados = (pokemonsFiltrados) => {
 
     // Limpiar la lista de la Pokédex antes de mostrar los filtrados
     pokedex.innerHTML = "";
-
+    // Limpiar el mensaje si existe
+    const mensajeExistente = document.getElementById('no_encuentra');
+    if (mensajeExistente) {
+         mensajeExistente.remove(); // Eliminar el mensaje si existe
+    }
+ 
+    // Verificar si hay Pokémon filtrados
+    if (pokemonsFiltrados.length === 0) {
+        // Crear un mensaje si no hay resultados
+        const mensaje = document.createElement("div");
+        mensaje.setAttribute('id', 'no_encuentra');
+        mensaje.textContent = "No se encontraron Pokémon que coincidan con los filtros.";
+        pokedex.appendChild(mensaje);
+        return; // Salir de la función
+    }
     // Iterar sobre los Pokémon filtrados y mostrarlos
     pokemonsFiltrados.forEach((pokemon) => {
         let tipo1 = pokemon.pkm_type[0]?.type.name || '';
@@ -160,14 +191,13 @@ const mostrarPokemonFiltrados = (pokemonsFiltrados) => {
         card.classList.add("card");
 
         card.innerHTML = `
+            <div class = "stats"> Ataque: ${pokemon.pkm_attack}</div>
+            <div class ="stats">Defensa:${pokemon.pkm_defense}</div>
             <img src="${pokemon.pkm_back}">
-            <div class = "precio"> ${pokemon.pkm_attack}</div>
             <img class="front" src="${pokemon.pkm_front}"><br>
             ${pokemon.id}. ${pokemon.name}<br>
-            
             <div class="types">${tipo1} ${tipo2}</div>
-            <div class = "precio"> ${pokemon.precio}€</div>
-            
+            <div class = "precio">${pokemon.precio}€</div>
         `;
 
         // Evento para añadir el Pokémon a la lista de deseos
@@ -179,4 +209,7 @@ const mostrarPokemonFiltrados = (pokemonsFiltrados) => {
         // Agregar la tarjeta del Pokémon a la Pokédex
         pokedex.appendChild(card);
     });
+
+   
 };
+

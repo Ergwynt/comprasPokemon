@@ -3,40 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokemon shop</title>
+    <title>Pokemon Shop</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <body>
-        <div class="header">
-        
-            <img src="./images/logo.png" class="logo">
-            
-        </div>
-        <div class="body">
-    
-            <button class="button">Let's go</button>
-        </div>
-        
-        <div class="filtros">
-            <input type="text" id="filtroTipo" class="input" placeholder="Buscar por tipo...">
-            <input type="text" id="filtroGen" class="input" placeholder="Buscar por generación...">
-            <input type="text" id="filtroAtaque" class="input" placeholder="Buscar por Ataque normal...">
-        </div>
-        <div class="filtros">
-            <input type="button" id="btn_lista_deseo" class="btnMenu" value="Añadir a lista de deseos" />
-            <input type="button" id="btn_ver_lista_deseo" class="btnMenu" value="Ver lista de deseos" />
-            <input type="button" id="btn_comprar" class="btnMenu" value="Comprar" />
-            <input type="button" id="btn_ver_compra" class="btnMenu" value="Ver compra" />
-            
-        </div>
-        <h2 class="cargandoDatos">Cargando Datos...</h2>
-        <div id="pokedex">
-            
-            
-        </div>
-        <script type="module" src="js/script.js"></script> <!-- type="module" da un error  -->
-    </body>
-    
+    <div class="header">
+        <img src="./images/logo.png" class="logo" alt="Logo de Pokémon Shop">
+    </div>
+
+    <div class="body">
+        <button class="button">¡Vamos!</button>
+    </div>
+
+    <div class="filtros">
+        <input type="text" id="filtroTipo" class="input" placeholder="Buscar por tipo...">
+        <input type="number" id="filtroAtaque" class="input" placeholder="Buscar por Ataque normal...">
+        <input type="number" id="filtroDefensa" class="input" placeholder="Buscar por defensa...">
+    </div>
+
+    <div class="filtros">
+        <input type="button" id="btn_lista_deseo" class="btnMenu" value="Añadir a lista de deseos" />
+        <input type="button" id="btn_ver_lista_deseo" class="btnMenu" value="Ver lista de deseos" />
+        <input type="button" id="btn_comprar" class="btnMenu" value="Comprar" />
+        <input type="button" id="btn_ver_compra" class="btnMenu" value="Ver compra" />
+    </div>
+
+    <h2 class="cargandoDatos">Cargando Datos...</h2>
+    <div id="pokedex"></div>
+
+    <script type="module" src="js/script.js"></script>
 </body>
 </html>
