@@ -1,4 +1,3 @@
-// Exportamos por defecto la clase Pokemon
 export default class Pokemon {
     // Constructor que recibe como parámetro data que contiene los datos de los Pokemon que obtenemos desde la API
     constructor(data) {
