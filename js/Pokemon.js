@@ -1,5 +1,5 @@
 export default class Pokemon {
-    // Constructor que recibe como parámetro data que contiene los datos de los Pokemon que obtenemos desde la API
+    
     constructor(data) {
         this.name = data.name;                          // Nombre del pokemon
         this.id = data.id;                              // Id del pokemon
