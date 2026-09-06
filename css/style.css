@@ -121,22 +121,22 @@ body {
 }
 .stats {
     display: inline-block;
-    margin-right: 10px; /* Espacio entre los divs */
+    margin-right: 10px; 
     padding: 5px;
     background-color: #e5ff55;
 }
 
 #no_encuentra {
-    position: fixed; /* Para mantener el mensaje fijo en la pantalla */
-    top: 50%; /* Centrar verticalmente */
-    left: 50%; /* Centrar horizontalmente */
-    transform: translate(-50%, -50%); /* Ajustar el punto de anclaje al centro */
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco con algo de transparencia */
-    border: 2px solid #ff0000; /* Borde rojo */
-    padding: 20px; /* Espaciado interno */
-    border-radius: 8px; /* Bordes redondeados */
-    text-align: center; /* Centrar texto */
-    z-index: 1000; /* Asegúrate de que esté encima de otros elementos */
-    font-family: Arial, sans-serif; /* Fuente del mensaje */
-    font-size: 18px; /* Tamaño de la fuente */
+    position: fixed;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: rgba(255, 255, 255, 0.9); 
+    border: 2px solid #ff0000;
+    padding: 20px;
+    border-radius: 8px; 
+    text-align: center;
+    z-index: 1000; 
+    font-family: Arial, sans-serif;
+    font-size: 18px; 
 }
